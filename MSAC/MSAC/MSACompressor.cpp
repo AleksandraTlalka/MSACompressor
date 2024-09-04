@@ -583,13 +583,13 @@ void MSACompressor::compress(const std::string& inputFile, const std::string& ou
 	std::ifstream ifs(inputFile);
 	if (!ifs) {
 		std::cerr << "Error: Unable to open input file: " << inputFile << std::endl;
-		return;
+		exit(1);
 	}
 
 	std::ofstream ofs(outputFile, std::ios::binary);
 	if (!ofs) {
 		std::cerr << "Error: Unable to open output file: " << outputFile << std::endl;
-		return;
+		exit(1);
 	}
 
 	std::vector<std::string> headers;
@@ -707,7 +707,7 @@ void MSACompressor::decompress(const std::string& inputFile, const std::string& 
 	std::ifstream ifs(inputFile, std::ios::binary);
 	if (!ifs) {
 		std::cerr << "Error: Unable to open input file: " << inputFile << std::endl;
-		return;
+		exit(1);
 	}
 
 	ifs.seekg(-static_cast<int>(3 * sizeof(uint64_t)), std::ios::end);
@@ -739,7 +739,7 @@ void MSACompressor::decompress(const std::string& inputFile, const std::string& 
 	std::ofstream ofs(outputFile);
 	if (!ofs) {
 		std::cerr << "Error: Unable to open output file: " << outputFile << std::endl;
-		return;
+		exit(1);
 	}
 
 	ifs.clear();
@@ -774,7 +774,7 @@ void MSACompressor::decompress(const std::string& inputFile, const std::string& 
 	std::fstream ofsUpdate(outputFile, std::ios::in | std::ios::out);
 	if (!ofsUpdate) {
 		std::cerr << "Error: Unable to open output file for updating: " << outputFile << std::endl;
-		return;
+		exit(1);
 	}
 
 	ifs.open(inputFile, std::ios::binary);
@@ -818,7 +818,7 @@ void MSACompressor::decompressSequences(const std::string& inputFile, const std:
 	std::ifstream ifs(inputFile, std::ios::binary);
 	if (!ifs) {
 		std::cerr << "Error: Unable to open input file: " << inputFile << std::endl;
-		return;
+		exit(1);
 	}
 
 	ifs.seekg(-static_cast<int>(3 * sizeof(uint64_t)), std::ios::end);
@@ -850,7 +850,7 @@ void MSACompressor::decompressSequences(const std::string& inputFile, const std:
 	std::ofstream ofs(outputFile);
 	if (!ofs) {
 		std::cerr << "Error: Unable to open output file: " << outputFile << std::endl;
-		return;
+		exit(1);
 	}
 
 	ifs.clear();
@@ -895,7 +895,7 @@ void MSACompressor::decompressSequences(const std::string& inputFile, const std:
 	std::fstream ofsUpdate(outputFile, std::ios::in | std::ios::out);
 	if (!ofsUpdate) {
 		std::cerr << "Error: Unable to open output file for updating: " << outputFile << std::endl;
-		return;
+		exit(1);
 	}
 
 	ifs.open(inputFile, std::ios::binary);
@@ -964,7 +964,7 @@ void MSACompressor::decompressColumns(const std::string& inputFile, const std::s
 	std::ifstream ifs(inputFile, std::ios::binary);
 	if (!ifs) {
 		std::cerr << "Error: Unable to open input file: " << inputFile << std::endl;
-		return;
+		exit(1);
 	}
 
 	ifs.seekg(-static_cast<int>(3 * sizeof(uint64_t)), std::ios::end);

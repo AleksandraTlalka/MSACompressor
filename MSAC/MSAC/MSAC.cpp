@@ -110,9 +110,11 @@ int main(int argc, char* argv[]) {
 
 	if (mode == "Sc") {
 		compressor.compress(inFile, outFile, zstdLevel, A, B, preprocessingType);
+		std::cout << "File compressed successfully." << std::endl;
 	}
 	else if (mode == "Sd") {
 		compressor.decompress(inFile, outFile, preprocessingType);
+		std::cout << "File decompressed successfully." << std::endl;
 	}
 	else if (mode == "Ds") {
 		std::vector<std::string> sequenceIds;
@@ -125,6 +127,7 @@ int main(int argc, char* argv[]) {
 			}
 		}
 		compressor.decompressSequences(inFile, outFile, sequenceIds, preprocessingType);
+		std::cout << "File decompressed successfully." << std::endl;
 	}
 	else if (mode == "Dc") {
 		std::vector<int> columnsIds;
@@ -137,6 +140,7 @@ int main(int argc, char* argv[]) {
 			}
 		}
 		compressor.decompressColumns(inFile, outFile, columnsIds, preprocessingType);
+		std::cout << "File decompressed successfully." << std::endl;
 	}
 	else if (mode == "Drc") {
 		std::vector<int> columnsIds;
@@ -154,6 +158,7 @@ int main(int argc, char* argv[]) {
 			columnsIds.push_back(i);
 		}
 		compressor.decompressColumns(inFile, outFile, columnsIds, preprocessingType);
+		std::cout << "File decompressed successfully." << std::endl;
 	}
 	else {
 		std::cerr << "Invalid mode." << std::endl;
